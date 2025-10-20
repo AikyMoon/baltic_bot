@@ -1,0 +1,10 @@
+audio/
+images/
+utils/
+venv/
+.env
+
+bot.log
+*.kml
+wsgi.py
+.DS_Store
