@@ -1,32 +1,24 @@
-# Используем официальный образ Python как базовый
-FROM python:3.9-slim-buster
+# Используем более свежий официальный образ Python на базе Debian Bullseye (Debian 11)
+FROM python:3.9-slim-bullseye
 
 # Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
 
 # Устанавливаем git для клонирования репозитория
-RUN apt-get update && apt-get install -y git
+# Важно: apt-get update должен быть выполнен перед apt-get install
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 # Клонируем ваш репозиторий GitHub
 # Замените <your_github_username> и <your_repository_name> на актуальные данные
-# Например: git clone https://github.com/aikymoon/tourism_bot.git .
 RUN git clone https://github.com/AikyMoon/baltic_bot .
 
 # Устанавливаем зависимости из requirements.txt
 # Предполагается, что requirements.txt находится в корне вашего репозитория
-COPY requirements.txt .
+# После клонирования репозитория, requirements.txt уже будет в WORKDIR /app
+# Нет необходимости в отдельном COPY requirements.txt, если он уже в репозитории.
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем остальной код проекта в контейнер
-# Если вы клонируете весь репозиторий, эта строка может быть не нужна,
-# так как `git clone` уже скопировал всё.
-# Однако, если вы хотите выборочно копировать файлы или если структура репозитория сложнее,
-# эту строку можно адаптировать. В данном случае, так как мы клонировали,
-# она скорее всего не нужна. Но оставляем её как пример.
-# COPY . .
-
 # Открываем порт, если бот будет взаимодействовать с внешними сервисами через вебхуки
-# В данном случае, для polling, это не обязательно, но хорошая практика для веб-приложений.
 # EXPOSE 8080 
 
 # Запускаем бота при запуске контейнера
