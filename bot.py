@@ -25,7 +25,7 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 # --- ЗАГРУЗКА МАРШРУТОВ ИЗ JSON ФАЙЛА ---
-JSON_FILE_PATH = "/Users/aikymoon/Desktop/ФКН/tourism_bot/data/tours.json"
+JSON_FILE_PATH = "data/tours.json"
 ROUTES = []
 try:
     with open(JSON_FILE_PATH, "r", encoding="utf-8") as f:

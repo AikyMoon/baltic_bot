@@ -14,7 +14,7 @@ router = Router()
 logger = logging.getLogger("TourBot")
 
 # --- Константы и загрузка данных ---
-ROUTES_FILE = "tourism_bot/data/tours.json"
+ROUTES_FILE = "data/tours.json"
 IMAGE_DIR = "tourism_bot/images"
 AUDIO_DIR = "tourism_bot/audio" # Новая папка для аудиофайлов
 PLACEHOLDER_IMAGE = os.path.join(IMAGE_DIR, "placeholder.jpg")

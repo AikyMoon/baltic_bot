@@ -11,7 +11,7 @@ router = Router()
 logger = logging.getLogger("TourBot")
 
 # --- Константы и загрузка данных ---
-DATA_FILE = "tourism_bot/data/regions2.json"  # Убедитесь, что путь к вашему JSON верен
+DATA_FILE = "data/regions2.json"  # Убедитесь, что путь к вашему JSON верен
 IMAGE_DIR = "tourism_bot/images"
 PLACEHOLDER_IMAGE = os.path.join(IMAGE_DIR, "placeholder.jpg")  # Общая заглушка, если нет других
 
